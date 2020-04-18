@@ -6,9 +6,9 @@ import json
 
 # This class takes in data and forwards to a device connected via tcp.
 class Forwarder:
-    def __init__(self):
-        self.host = '127.0.0.1'
-        self.port = 10000
+    def __init__(self, host, port):
+        self.host = host
+        self.port = port
         # launching a thread to look for a connection
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.bind((self.host, self.port))
@@ -42,7 +42,7 @@ class Forwarder:
 
 
 if __name__ == "__main__":
-    forwarder = Forwarder()
+    forwarder = Forwarder('192.168.1.122', 10000)
     while True:
         data = input("Data to send: ")
         result = forwarder.acceptData(data)
