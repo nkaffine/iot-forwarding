@@ -5,7 +5,7 @@ class PiClient:
         f = open("config.txt", "r")
         self.server_ip = f.readline()
         self.server_port = f.readline()
-        self.receiver = receiver.Receiver(self.server_ip, self.server_port)
+        self.receiver = receiver.Receiver(self.server_ip, int(self.server_port))
 
     def start(self):
         while True:
